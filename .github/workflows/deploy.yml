@@ -1,5 +1,5 @@
 name: Deployment
-# Trigger the workflow on push events to the main and dev branches
+# Trigger the workflows on push events to the main and dev branches
 on:
   push:
     branches:
