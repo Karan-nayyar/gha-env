@@ -1,5 +1,5 @@
 name: Deployment
-# Trigger the workflows on push events to the main and dev branches
+# Trigger the workflow on push events to the main and dev branches
 on:
   push:
     branches:
@@ -11,9 +11,9 @@ jobs:
   test:
     environment: testing
     env:
-      MONGODB_CLUSTER_ADDRESS: ${{secrets.MONGODB_CLUSTER_ADDRESS}}
-      MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
-      MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
+      MONGODB_CLUSTER_ADDRESS: ${{ secrets.MONGODB_CLUSTER_ADDRESS }}
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       PORT: 8080
     runs-on: ubuntu-latest
     steps:
