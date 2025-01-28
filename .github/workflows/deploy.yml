@@ -26,13 +26,15 @@ jobs:
           key: npm-deps-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
-      - name: Debug environment variables
-        run: env | grep MONGODB
+      - name: Debug environment context
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Environment: ${{ job.environment }}"
       - name: Debug secrets
         run: |
-          echo "Cluster Address: ${{ secrets.MONGODB_CLUSTER_ADDRESS }}"
-          echo "Username: ${{ secrets.MONGODB_USERNAME }}"
-          echo "Password Length: ${#${{ secrets.MONGODB_PASSWORD }}}"
+          echo "Cluster Address: ${MONGODB_CLUSTER_ADDRESS:-not set}"
+          echo "Username: ${MONGODB_USERNAME:-not set}"
+          echo "Password Length: ${#MONGODB_PASSWORD}"
       - name: Test MongoDB connectivity
         run: |
           node -e "
