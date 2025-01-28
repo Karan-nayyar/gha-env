@@ -28,6 +28,11 @@ jobs:
         run: npm ci
       - name: Debug environment variables
         run: env | grep MONGODB
+      - name: Debug secrets
+        run: |
+          echo "Cluster Address: ${{ secrets.MONGODB_CLUSTER_ADDRESS }}"
+          echo "Username: ${{ secrets.MONGODB_USERNAME }}"
+          echo "Password Length: ${#${{ secrets.MONGODB_PASSWORD }}}"
       - name: Test MongoDB connectivity
         run: |
           node -e "
